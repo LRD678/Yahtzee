@@ -6,7 +6,49 @@
 
 import random
 
-# Gamestates
+# EXAMPLES (stuff I couldn't fit into my project)
+
+# Example Variables
+
+exampleSet = {100, 200, 300}
+exampleDict = {'Landen' : 3, 'Marco' : 4, 'Sarim' : 5.0}
+listOfLists = [["Landen", "Marco"], [3, 6, 7]]
+
+# Example Functions
+
+def getIdxOfCharInString(givenChar, string):
+    try:
+        for characterIdx in range(0, len(string)):
+            if givenChar == string[characterIdx]:
+                return characterIdx
+    except:
+        print("Something went wrong!")
+        
+def getFirst3CharOfString(string):
+    return string[:3]
+
+def writeFile():
+    file1 = open("MyFile.txt","a")
+    file1.write("Hello class this is a string that will be saved to a file. All of this text will be on one really long line")
+    file1.close()
+
+def readFile(givenFile):
+    givenFile.open()
+    reading = givenFile.read()
+    givenFile.close()
+    return reading
+
+def lockStep():
+    total = 0
+    list1 = [1, 2, 3]
+    list2 = [6, 7, 8]
+    for i in range(0, len(list1)):
+            total += (list1[i] + list2[i])
+    return total
+
+assert lockStep() == 27
+
+# GAME PORTION
 
 playersTurn = True
 gameOver = False
@@ -17,23 +59,6 @@ playerHand = []
 dealerHand = []
 hiddenDealerHand = []
 
-
-
-deck = []
-
-def createDeck():
-    
-    # The decks guides
-    suites = ["HEARTS", "SPADES", "CLUBS", "DIAMONDS"]
-    numbers = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
-    
-    # Loop through and create 52 cards
-    for suite in suites:
-        for number in numbers:
-            deck.append((suite, number))
-    
-    # Shuffle the deck
-    random.shuffle(deck)
 
 def drawACard():
     
@@ -94,7 +119,20 @@ def shouldDealerHit():
     else:
         return False
 
-createDeck()
+deck = []
+
+    
+# The decks guides
+suites = ["HEARTS", "SPADES", "CLUBS", "DIAMONDS"]
+numbers = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
+
+# Loop through and create 52 cards
+for suite in suites:
+    for number in numbers:
+        deck.append((suite, number))
+
+# Shuffle the deck
+random.shuffle(deck)
 
 # Player draws 2 and dealer draws 1 visible and 1 hidden
 
